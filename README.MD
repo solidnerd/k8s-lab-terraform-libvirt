@@ -13,7 +13,7 @@ I got this all running using Qemu as the backing provider for libvirt. I also us
 We need a few base apps and utilities (probably more than this needs to be installed, sorry if the base list of packages isn't 100% correct)
 
 ```bash
-sudo apt install libvirt-clients libvirt-daemon qemu tmux genisoimage
+sudo apt install libvirt-clients libvirt-daemon qemu tmux genisoimage virt-manager qemu-system-x86
 ```
 
 Your account must have access to manage libvirt resources as well this should get you started.
@@ -40,7 +40,7 @@ This lab consists of 3 virtual machines with the following names and specificati
 
 ```bash
 # If all the dependencies are in place then initialize, plan, and apply the terraform manifest to bring things up.
-make init plan create
+make init plan apply
 
 # Destroy just as easily.
 make destroy

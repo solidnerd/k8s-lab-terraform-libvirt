@@ -90,12 +90,12 @@ libvirt/clean: ## Removes any dangling libvirt domains and subnets
 	virsh undefine k8s-worker-1 || true
 	virsh destroy k8s-worker-2 || true
 	virsh undefine k8s-worker-2 || true
-	virsh net-destroy kube_ext || true
-	virsh net-undefine kube_ext || true
-	virsh net-destroy kube_node || true
-	virsh net-undefine kube_node || true
-	virsh pool-destroy ${POOL_NAME} || true
-	virsh pool-undefine ${POOL_NAME} || true
+#	virsh net-destroy kube_ext || true
+#	virsh net-undefine kube_ext || true
+#	virsh net-destroy kube_nodes || true
+#	virsh net-undefine kube_nodes || true
+#	virsh pool-destroy ${POOL_NAME} || true
+#	virsh pool-undefine ${POOL_NAME} || true
 
 .PHONY: clean
 clean: ## Clean local cached terreform elements
@@ -116,7 +116,7 @@ apply: ## Apply deployment
 
 .PHONY: destroy
 destroy: ## Plan deployment
-	$(terraform) destroy
+	$(terraform) destroy -refresh=false
 
 .PHONY: ssh-master
 ssh-master: ## connect to the master node
